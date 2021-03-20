@@ -15,7 +15,6 @@ jobs:
       CI_FIREBASE_MESSAGE: ${{ github.event.head_commit.message }} - ${{ github.event.head_commit.url }}/checks
     steps:
       - uses: actions/checkout@v1
-      - run: yarn build
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
