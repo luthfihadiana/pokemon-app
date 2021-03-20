@@ -10,9 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x]
-    env:
-      CI_FIREBASE_MESSAGE: ${{ github.event.head_commit.message }} - ${{ github.event.head_commit.url }}/checks
+        node_version: ['8', '10', '12']
+        os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js ${{ matrix.node-version }}
@@ -22,10 +21,12 @@ jobs:
       - name: yarn install
         run: |
           yarn
-      - name: Run tests
-        run: |
-          CI=true
-      - name: Build & Deploy
+      - name: Build
         run: |
           yarn build
-          firebase deploy --only hosting --token ${{ SECRETS.FIREBASE_TOKEN }} --message "$CI_FIREBASE_MESSAGE"
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
