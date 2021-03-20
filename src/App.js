@@ -10,6 +10,7 @@ function App() {
     <React.Fragment>
       <GlobalStyles />
       <div className="app">
+        <h1>Bebas</h1>
         <Header />
         <Sidebar />
       </div>
