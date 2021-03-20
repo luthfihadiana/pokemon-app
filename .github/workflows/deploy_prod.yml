@@ -4,7 +4,7 @@
 name: Deploying Website Production
 on:
   push:
-    branches: -main
+    branches: [main]
 jobs:
   Build_Deploy_Web:
     runs-on: ubuntu-latest
