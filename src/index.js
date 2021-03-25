@@ -4,6 +4,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 // https://graphql-pokeapi.vercel.app/api/graphql
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import * as serviceWorker from "./serviceWorker";
 
 const client = new ApolloClient({
   uri: "https://graphql-pokeapi.vercel.app/api/graphql",
@@ -45,3 +46,5 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+serviceWorker.register();
