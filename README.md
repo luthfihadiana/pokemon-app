@@ -36,3 +36,14 @@ run this command to deploy
 $ firebase deploy
 ```
 You can also deploy this project by push commit to branch `main`. This project already connect to github actions to auto deploy when detect new commit.
+
+## Features
+### Pokedex
+![image](https://user-images.githubusercontent.com/32569977/112416471-505f6680-8d58-11eb-9bf0-bf450f3edd65.png)
+See all available pokemon in this application
+### My Pokemon
+![image](https://user-images.githubusercontent.com/32569977/112416716-cd8adb80-8d58-11eb-8c45-6a95562e1698.png)
+Manage and see your pokemon collection
+### Pokemon Detail
+![image](https://user-images.githubusercontent.com/32569977/112416745-db406100-8d58-11eb-8ed7-b23f7a94b7c0.png)
+See detail pokemon and catch them if you want to (you can give nickname for that pokemon). If you want to catch pokemon, simply click pokeball at right bottom corner.
