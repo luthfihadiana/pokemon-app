@@ -1,20 +1,24 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import React from "react";
+import React, { Suspense } from "react";
 import { jsx } from "@emotion/react";
 import GlobalStyles from "./styles/main";
-import Sidebar from "./components/Sidebar";
-import Header from "./components/Header";
+import { BrowserRouter as Router } from "react-router-dom";
+import Loader from "./components/loader";
+import Styles from "./app.style";
+import Routes from "./routes";
 function App() {
   return (
-    <React.Fragment>
-      <GlobalStyles />
-      <div className="app">
-        <h1>Bebas</h1>
-        <Header />
-        <Sidebar />
-      </div>
-    </React.Fragment>
+    <Router>
+      <React.Fragment>
+        <GlobalStyles />
+        <div css={Styles.container}>
+          <Suspense fallback={<Loader />}>
+            <Routes />
+          </Suspense>
+        </div>
+      </React.Fragment>
+    </Router>
   );
 }
 

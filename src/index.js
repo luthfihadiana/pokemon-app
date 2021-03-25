@@ -7,7 +7,30 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 const client = new ApolloClient({
   uri: "https://graphql-pokeapi.vercel.app/api/graphql",
-  cache: new InMemoryCache()
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          feed: {
+            // Don't cache separate results based on
+            // any of this field's arguments.
+            keyArgs: [],
+            // Concatenate the incoming list items with
+            // the existing list items.
+            merge(existing, incoming, { args: { offset = 0 } }) {
+              // Slicing is necessary because the existing data is
+              // immutable, and frozen in development.
+              const merged = existing ? existing.slice(0) : [];
+              for (let i = 0; i < incoming.length; ++i) {
+                merged[offset + i] = incoming[i];
+              }
+              return merged;
+            }
+          }
+        }
+      }
+    }
+  })
 });
 ReactDOM.render(
   <React.StrictMode>

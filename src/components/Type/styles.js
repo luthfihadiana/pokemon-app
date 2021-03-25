@@ -1,11 +1,8 @@
 import { css } from "@emotion/react";
-
 const Styles = {
   container: css`
-    width: 100%;
-    &.sticky {
-      padding: 0.8rem 1rem;
-    }
+    display: flex;
+    gap: 0.8rem;
   `
 };
 
